@@ -7,7 +7,7 @@ Resources:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       KeyName: pipeline
-      ImageId: "ami-0557a15b87f6559cf"
+      ImageId: ami-0557a15b87f6559cf
       InstanceType: t3.micro
   InstanceSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
@@ -15,6 +15,6 @@ Resources:
       GroupDescription: Enable SSH access via port 22
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: "22"
-          ToPort: "22"
+          FromPort: 22
+          ToPort: 22
           CidrIp: 0.0.0.0/0
