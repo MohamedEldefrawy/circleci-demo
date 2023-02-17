@@ -67,7 +67,7 @@ jobs:
           command: |
             aws cloudformation deploy \
             --template-file cloudformation/bucket.yml \
-            --stack-name "${CIRCLE_WORKFLOW_ID:0:5}"" \
+            --stack-name "${CIRCLE_WORKFLOW_ID:0:5}" \
             --parameter-overrides Name="${CIRCLE_WORKFLOW_ID:0:5}"
       # Uncomment the step below if yoou wish to upload all contents of the current directory to the S3 bucket
       - run: aws s3 sync . s3://mybucket-${CIRCLE_WORKFLOW_ID:0:5} --delete
