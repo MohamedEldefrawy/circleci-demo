@@ -1,11 +1,12 @@
 version: 2.1
-destroy_environment:
-  steps:
-    - run:
-        name: Destroy environment
-        when: on_fail
-        command: |
-          aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5}
+commands:
+  destroy_environment:
+    steps:
+      - run:
+          name: Destroy environment
+          when: on_fail
+          command: |
+            aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} --region us-east-1
 jobs:
   create_infrastructure:
     docker:
@@ -36,7 +37,7 @@ jobs:
           command: sh shellScripts/run-playbook.sh
   smoke_test:
     docker:
-      - image: alpine:latest
+      - image: amazon/aws-cli
     steps:
       - run: apk add --update curl
       - run:
@@ -51,7 +52,7 @@ jobs:
               return 1
             fi
       - destroy_environment
-          when: on_fail
+        when: om_fail
 
 workflows:
   pipleine:
