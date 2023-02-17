@@ -51,8 +51,8 @@ jobs:
             else
               return 1
             fi
-      - destroy_environment
-        when: om_fail
+      - destroy_environment:
+          when: om_fail
 
 workflows:
   pipleine:
