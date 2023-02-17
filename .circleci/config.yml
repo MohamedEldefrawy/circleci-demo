@@ -33,8 +33,7 @@ jobs:
             apk add --update ansible
       - run:
           name: Run Playbook and Configure server
-          command: |
-            ./shellScripts/run-playbook.sh
+          command: sh shellScripts/run-playbook.sh
 workflows:
   pipleine:
     jobs:
