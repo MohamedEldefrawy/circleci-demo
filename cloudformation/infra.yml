@@ -7,7 +7,7 @@ Resources:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       KeyName: pipeline
-      ImageId: ami-0557a15b87f6559cf
+      ImageId: ami-0735c191cf914754d
       InstanceType: t3.micro
   InstanceSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
