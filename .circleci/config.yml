@@ -3,7 +3,6 @@ destroy_environment:
   steps:
     - run:
         name: Destroy environment
-        # ${CIRCLE_WORKFLOW_ID} is a Built-in environment variable
         when: on_fail
         command: |
           aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5}
@@ -20,7 +19,26 @@ jobs:
                     --template-file cloudformation/infra.yml \
                     --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                     --region us-west-2
+  configure_infrastructure:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          # You can get this ID in the section where you registered the SSH Key
+          fingerprints: ["37:aa:00:5e:e9:f0:62:82:13:03:89:4c:f5:d5:dc:40"]
+      - run:
+          name: Install Ansible
+          command: |
+            apk add --update ansible
+      - run:
+          name: Run Playbook and Configure server
+          command: |
+            ./shellScripts/run-playbook.sh
 workflows:
   pipleine:
     jobs:
       - create_infrastructure
+      - configure_infrastructure:
+          requires:
+            - create_infrastructure

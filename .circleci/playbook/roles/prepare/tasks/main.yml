@@ -1,0 +1,15 @@
+---
+- name: Update Packages
+  become: true
+  apt:
+    update_cache: yes
+
+- name: Upgrade Packages
+  become: true
+  apt:
+    upgrade: yes
+
+- name: Remove Dependencies That Are No Longer Required
+  become: true
+  apt:
+    autoremove: yes
