@@ -19,7 +19,7 @@ jobs:
             aws cloudformation deploy \
                     --template-file cloudformation/infra.yml \
                     --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
-                    --profile default
+                    --region us-west-2
 workflows:
   pipleine:
     jobs:
