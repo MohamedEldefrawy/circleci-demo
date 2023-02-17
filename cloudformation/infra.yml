@@ -6,7 +6,7 @@ Resources:
     Properties:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
-      KeyName: webServer
+      KeyName: pipeline
       ImageId: ami-0dfcb1ef8550277af
       InstanceType: t3.micro
   InstanceSecurityGroup:
