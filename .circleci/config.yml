@@ -34,12 +34,12 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: sh shellScripts/run-playbook.sh
-  smoke_test: 
+  smoke_test:
     docker:
       - image: alpine:latest
     steps:
       - run: apk add --update curl
-      - run: 
+      - run:
           name: smoke test
           command: |
             URL="https://blog.udacity.com/"
@@ -51,7 +51,6 @@ jobs:
               return 1
             fi
 
-      
 workflows:
   pipleine:
     jobs:
@@ -59,3 +58,6 @@ workflows:
       - configure_infrastructure:
           requires:
             - create_infrastructure
+      - smoke_test:
+          requires:
+            - configure_infrastructure
