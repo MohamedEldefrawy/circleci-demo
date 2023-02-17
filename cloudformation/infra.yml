@@ -1,12 +1,12 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: ND9991 C3 L4
+Description: Createing EC2 instance with enabling SSH inbound
 Resources:
   EC2Instance:
     Type: "AWS::EC2::Instance"
     Properties:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
-      KeyName: ansible-key
+      KeyName: pipeline
       ImageId: "ami-0557a15b87f6559cf"
       InstanceType: t3.micro
   InstanceSecurityGroup:
