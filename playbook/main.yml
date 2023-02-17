@@ -9,4 +9,3 @@
   roles:
     - prepare
     - installNode
-    - deploy

@@ -1,8 +1,0 @@
----
-- name: Deploy
-  shell: |
-    aws cloudformation deploy \
-        --template-file cloudformation/cloudfront.yml \
-        --stack-name production-distro \
-        --parameter-overrides PipelineID="mybucket473659653982" \ # Name of the S3 bucket you created manually.
-    --tags project=udapeople &
