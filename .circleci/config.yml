@@ -117,13 +117,13 @@ jobs:
 workflows:
   pipleine:
     jobs:
-      - create_infrastructure
-      - configure_infrastructure:
-          requires:
-            - create_infrastructure
-      - smoke_test:
-          requires:
-            - configure_infrastructure
+      # - create_infrastructure
+      # - configure_infrastructure:
+      #     requires:
+      #       - create_infrastructure
+      # - smoke_test:
+      #     requires:
+      #       - configure_infrastructure
       - create_and_deploy_front_end:
           requires:
             - smoke_test
