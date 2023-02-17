@@ -6,8 +6,8 @@ Resources:
     Properties:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
-      KeyName: pipeline
-      ImageId: ami-0735c191cf914754d
+      KeyName: webServer
+      ImageId: ami-0dfcb1ef8550277af
       InstanceType: t3.micro
   InstanceSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
